@@ -1,0 +1,5 @@
+# Only this static snapshot is built/deployed. The local organiser remains local.
+[build]
+  base = "client-review"
+  publish = "."
+  command = ""

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="Redcatch Scaffolding portfolio photographs, organised by project and service category for client review."><title>Portfolio review · Redcatch Scaffolding</title><link rel="stylesheet" href="style.css"><script src="review.js" defer></script></head>
+<body>
+<header><div class="wrap"><p class="eyebrow">Redcatch Scaffolding</p><h1>Portfolio review</h1><p class="intro">A collection of project photographs, organised for review.</p><div class="summary"><span><strong>{{GROUP_COUNT}}</strong> groups</span><span><strong>{{PHOTO_COUNT}}</strong> photographs</span><span><strong>{{HOMEPAGE_COUNT}}</strong> homepage selections</span></div></div></header>
+<main class="wrap"><div class="review-note"><strong>Reviewing the collection</strong><p>Browse the groups and categories below. Open any photograph for a larger view. Hero images are the proposed lead photograph for each group; homepage shortlist labels show the separate homepage selection.</p></div>
+<div class="filters" hidden><label>Category<select id="category"><option value="all">All categories</option>{{CATEGORY_OPTIONS}}</select></label><label>Collection<select id="collection"><option value="all">All photographs</option><option value="homepage">Homepage shortlist</option></select></label><label class="search">Find a group<input id="search" type="search" placeholder="Search group titles"></label></div>
+<p id="results" class="results" aria-live="polite"></p><div id="galleries">{{GALLERIES}}</div><p id="empty" hidden>No photographs match these filters.</p></main>
+<footer class="wrap">Redcatch Scaffolding · Portfolio grouping and categorisation review</footer>
+<dialog id="viewer" aria-label="Photograph viewer"><div class="viewer-toolbar"><span id="caption"></span><button id="close" type="button" aria-label="Close photograph">Close ✕</button></div><div class="viewer-image"><img id="full-image" alt=""></div><div class="viewer-navigation"><button id="previous" type="button">← Previous</button><span id="position" aria-live="polite"></span><button id="next" type="button">Next →</button></div></dialog>
+</body></html>

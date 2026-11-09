@@ -51,3 +51,37 @@ Each project has one primary folder under domestic, commercial, temporary-roofs 
 The manifest holds project evidence, provisional descriptions, content assessments, hero suggestions, dimensions, crop decisions, duplicate candidates, hashes and original filenames. `previous-manifest.json` is the previous saved edit, not a full version history. Back up the entire manifests directory before substantial review sessions. Do not run a scan concurrently with the review server or run two server instances.
 
 Reports are in `portfolio/reports`: the initial source inventory, original and cleaned contact sheets, QA JSON and summary. Hash checks validate source preservation and generated paths. Crop safety, site identity, use category and uncertain duplicates still require human approval. No portfolio pages or final SEO case studies are generated.
+
+## Read-only client review on Netlify
+
+The generated **client-review/** folder is a standalone client page. It shows retained photographs in your current groups and primary categories, with hero and homepage-shortlist labels. Categories that are still Needs review appear as Category to confirm. Empty groups and unsuitable/redundant photographs are omitted. Any remaining unassigned photographs appear separately. Search, category/shortlist filters and the large-image viewer are browsing tools only: no edits or backend are available.
+
+To update the client snapshot after making changes in the local organiser:
+
+```sh
+python3 organiser/export_client_review.py
+```
+
+This exporter requires only Python's standard library and copies existing cropped WebP images and thumbnails. It never changes the source collection or review manifest. The static snapshot is deliberately committed to Git so Netlify does not need to run the image-processing pipeline.
+
+Commit and push **client-review/**, **netlify.toml**, **organiser/export_client_review.py**, **organiser/client-review/** and the README changes to your GitHub repository. The exporter/template files are for future local updates; only client-review is published.
+
+In Netlify, import the existing GitHub repository **netotaku/rc-gallery**, select **main**, and use these settings (already declared in netlify.toml):
+
+| Setting | Value |
+| --- | --- |
+| Base directory | `client-review` |
+| Build command | Leave empty |
+| Publish directory | `.` (relative to the base directory) |
+
+The base directory also keeps Netlify from installing the local organiser's root-level Python requirements. Netlify checks out the Git repository but only deploys files inside the configured publish directory. Existing original images and local manifests already tracked in Git remain in your repository; they are not part of the published site. See [Netlify's build configuration documentation](https://docs.netlify.com/build/configure-builds/overview/) for the publish-directory behavior.
+
+After the initial Netlify connection, pushing an updated snapshot to main triggers deployment. The client site is a snapshot: edits in your local app become visible to the client only after export, commit and push. No Netlify account credentials are stored in this project. Search indexing is discouraged with robots.txt and noindex headers; this does not add password protection.
+
+For a local preview without the editing backend:
+
+```sh
+python3 -m http.server 8766 --bind 127.0.0.1 --directory client-review
+```
+
+Open http://127.0.0.1:8766. You can also open client-review/index.html directly in your browser.
