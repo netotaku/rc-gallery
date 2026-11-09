@@ -1,0 +1,20 @@
+{
+  "source_images": 115,
+  "unique_file_contents": 114,
+  "projects": 24,
+  "exact_duplicates": 1,
+  "crop_proposals": 68,
+  "near_duplicate_candidate_pairs": 13,
+  "unassigned": 3,
+  "errors": [],
+  "limitations": [
+    "Initial groups were proposed through image-capable visual inspection of contact sheets. No embedding model is installed; no automatic cross-viewpoint site clustering is claimed. New images remain unassigned.",
+    "UI elements require visual review; black-border detection does not remove toolbars."
+  ],
+  "manual_checks_remaining": [
+    "Confirm each proposed site grouping",
+    "Review crop boundaries and screenshot toolbars",
+    "Confirm near-duplicate matches; no uncertain match is excluded automatically",
+    "Confirm category and content assessment before marking ready"
+  ]
+}

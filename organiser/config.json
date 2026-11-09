@@ -1,0 +1,10 @@
+{
+  "web_max": 1600,
+  "web_quality": 85,
+  "thumbnail_max": 360,
+  "black_threshold": 18,
+  "edge_fraction": 0.995,
+  "near_duplicate_distance": 7,
+  "homepage_max": 2500,
+  "homepage_jpeg_quality": 90
+}
